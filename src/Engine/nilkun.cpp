@@ -1,10 +1,11 @@
 #include "./nilkun.h"
 #include <iostream>
+#include <time.h>
 
 // #include <random>
 
 namespace nilkun {
-    static uint32_t nLehmer = 0;
+    static uint32_t nLehmer = time(NULL);
 	uint32_t Lehmer32() {
 		nLehmer += 0xe120fc15;
 		uint64_t tmp;
@@ -15,12 +16,13 @@ namespace nilkun {
 		return m2;
 	};
 
-	int random(int min, int max) { 
+	int random(const int min, const int max) { 
 		int val = min + Lehmer32() % (max - min); 
 			//min + (r() % (max - min)); 
 		return val; 
 	};
 	//float random(float min, float max) { return max - min; }; // placeholder
+	// ((float)
 
 	int min(int val1, int val2) { return val1 < val2 ? val1 : val2; };
 	Position::Position(const nilkun::Position &pos) {

@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <vector>
 
 // HELPERS
 #include "./Engine/ScreenManager.h"
@@ -28,20 +29,23 @@ int main()
 	bool running = true;
 
 	// Assets Manager
-	AssetsManager *am = new AssetsManager(renderer);
+	// AssetsManager *am = new AssetsManager(renderer);
 	// am -> create("resources/player_sprites.png");
 
-	Vehicle ship;
+	// std::vector<Vehicle> ships(20);
+	Flock *flock = new Flock();
 
 	while(running) {
 		
 		// Users input
 		running = userInput.read();
-		ship.update(0.016);	
+		flock -> update(16);
 		// Rendering
 		screen -> clear();
-		ship.render(renderer);
+		flock -> render(renderer);
 		screen -> render();
 	}
+	delete flock;
 	screen -> close();
+	return 1;
 }
