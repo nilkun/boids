@@ -12,6 +12,8 @@ struct fVector {
 	fVector getPerp();
 	void truncate(float maxValue);
 	float lengthSq();
+	float length();
+	void setMag(float mag);
 	fVector operator/(float &rhs);
 	fVector operator/(const float &rhs); 
 	fVector operator*(const float &rhs); 
@@ -31,16 +33,21 @@ class Flock
 };
 class MovingEntity {
 	protected:
+	public:
 		fVector velocity;
 		fVector heading;
 		fVector side;
 
 		fVector position;
+		fVector extraPos;
+		bool isNearBottom;
 
 		float mass = .5;
 		float maxSpeed = 19;
 		float maxForce = 39;
 		float maxTurnRate = 3;
+
+		fVector steeringForce_;
 	public:
 		MovingEntity();
 		void render(SDL_Renderer *renderer);
@@ -56,5 +63,6 @@ class Vehicle : public MovingEntity
 		std::vector<Vehicle*> getNearby();
 		fVector steering();
 		Vehicle(Flock *flock);
+		void pre();
 		void update(float elapsed_time);
 };
