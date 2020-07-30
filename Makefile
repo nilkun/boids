@@ -1,6 +1,6 @@
 UPDATING=
 MAIN=
-ALLFILES= ./src/main.cpp ./src/Engine/AssetsManager.cpp ./src/Engine/ScreenManager.cpp ./src/Engine/nilkun.cpp ./src/Units/MovingEntity.cpp
+ALLFILES= ./src/main.cpp ./src/Engine/AssetsManager.cpp ./src/Engine/ScreenManager.cpp ./src/Engine/nilkun.cpp ./src/Units/MovingEntity.cpp ./src/Engine/fVector.cpp ./src/Units/Vehicle.cpp
 #./src/GameObjects/Map.cpp ./src/GameObjects/Player.cpp ./src/GameObjects/Monsters.cpp ./src/nilkun.cpp ./src/Camera.cpp ./src/RenderableObject.cpp ./src/Animation.cpp ./src/Texture.cpp
 TARGETFILE=boids
 LFLAGS= 

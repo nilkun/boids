@@ -1,1 +1,0 @@
-g++ -Wall -o boids  ./src/main.cpp ./src/Engine/AssetsManager.cpp ./src/Engine/ScreenManager.cpp    -lSDL2 -lSDL2_image -lSDL2_gfx -lSDL2_ttf
