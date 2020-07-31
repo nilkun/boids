@@ -10,9 +10,11 @@ COMPILER=g++
 
 # emscriptem
 #MAIN=./src/emscripten.cpp ./src/Game.cpp
-CFLAGS=-s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='["png"]' --preload-file resources
+CFLAGS=-s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='["png"]' 
+# --preload-file resources
 COMPILER=emcc
 TARGETFILE=wasm/game.html
+LFLAGS= -std=c++14 -Wno-all
 
 all:
 	$(COMPILER) $(LFLAGS) -o $(TARGETFILE) $(MAIN) $(ALLFILES) $(GAMEENGINE) $(UPDATING) $(CFLAGS)
