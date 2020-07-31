@@ -90,11 +90,12 @@ void Vehicle::update(float elapsed_time) {
 	velocity.truncate(maxSpeed);
 	position += velocity * elapsed_time;
 //
-
-	if(position.x > 960) position.x -= 960;
-	else if (position.x < 0) position.x += 960;
-    if(position.y > 540) position.y -= 540;
-	else if (position.y <0) position.y += 540;	
+	int SCREENWIDTH = 1360;
+	int SCREENHEIGHT = 768;
+	if(position.x > 1360) position.x -= 1360;
+	else if (position.x < 0) position.x += 1360;
+    if(position.y > 768) position.y -= 768;
+	else if (position.y <0) position.y += 768;	
 
 	if(velocity.getLengthSq() > 0.00000001)
 	{
@@ -105,25 +106,25 @@ void Vehicle::update(float elapsed_time) {
 	// Find close in torus
 	isNearBottom = false;
 	if(position.x < rad) {
-		extraPos.x = 960 + position.x;
+		extraPos.x = 1360 + position.x;
 		extraPos.y = position.y;
 		isNearBottom = true;
 	}	
-	else if(position.x > 960 - rad) {
-		extraPos.x = position.x - 960;
+	else if(position.x > 1360 - rad) {
+		extraPos.x = position.x - 1360;
 		extraPos.y = position.y;
 		isNearBottom = true;
 	}	
-	if(position.y > 540 - rad) 
+	if(position.y > 768 - rad) 
 	{ 
 		if(!isNearBottom) extraPos.x = position.x;
-		extraPos.y = position.y - 540;
+		extraPos.y = position.y - 768;
 		isNearBottom = true;
 	}
 	if(position.y < rad) 
 	{ 
 		if(!isNearBottom) extraPos.x = position.x;
-		extraPos.y = 540 + position.y;
+		extraPos.y = 768 + position.y;
 		isNearBottom = true;
 	}
 }

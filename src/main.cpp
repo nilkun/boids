@@ -14,8 +14,8 @@
 // STD
 #include <algorithm>
 
-const int SCREENWIDTH = 960;
-const int SCREENHEIGHT = 540;
+const int SCREENWIDTH = 1360;
+const int SCREENHEIGHT = 768;
 
 class Game {
 	public:
