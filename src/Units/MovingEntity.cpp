@@ -51,27 +51,18 @@ void Flock::render(SDL_Renderer *renderer) {
 		// DrawCircle(renderer, boids[0] -> position.x, boids[0] -> position.y, rad);
 }
 MovingEntity::MovingEntity() {
+	SCREENWIDTH = 1360;
+	SCREENHEIGHT = 768;
 	float direction = (nilkun::random(1, 360)/360.0f)*6.2308f;
 	heading = { cos(direction), sin(direction) };
 	side = { sin(direction), -cos(direction) };
-	position = { static_cast<float>(nilkun::random(0, 959)), static_cast<float>(nilkun::random(0,539))};
+	position = { static_cast<float>(nilkun::random(0, SCREENWIDTH), static_cast<float>(nilkun::random(0,SCREENHEIGHT))};
 	maxSpeed = nilkun::random(260, 300);
 	velocity = { cos(direction)*maxSpeed, sin(direction)*maxSpeed };
 	mass = 1;
 	isNearBottom = false;
-	SCREENWIDTH = 1360;
-	SCREENHEIGHT = 768;
 
 };
-// SDL_Point* getNewPoints(SDL_Point[4] points, int x, int y) {	
-	// SDL_Point*  newPoints = new SDL_Point[4];
-		// *newPoints[0] =	{ points[0].x + x, points[0].y + y };
-		// *newPoints[1] = { points[1].x + x, points[1].y + y };
-		// *newPoints[2] =	{ points[2].x + x, points[2].y + y };
-		// *newPoints[3] =	{ points[3].x + x, points[3].y + y };
-	// }
-	// return newPoints;
-// };
 void setNewPoints(SDL_Point newPoints[4], SDL_Point points[4], int x, int y) {
 		newPoints[0].x = points[0].x + x;
 		newPoints[0].y = points[0].y + y;

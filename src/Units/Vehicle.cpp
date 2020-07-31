@@ -92,10 +92,10 @@ void Vehicle::update(float elapsed_time) {
 //
 	int SCREENWIDTH = 1360;
 	int SCREENHEIGHT = 768;
-	if(position.x > 1360) position.x -= 1360;
-	else if (position.x < 0) position.x += 1360;
-    if(position.y > 768) position.y -= 768;
-	else if (position.y <0) position.y += 768;	
+	if(position.x > SCREENWIDTH) position.x -= SCREENWIDTH;
+	else if (position.x < 0) position.x += SCREENWIDTH;
+    if(position.y > SCREENHEIGHT) position.y -= SCREENHEIGHT;
+	else if (position.y <0) position.y += SCREENHEIGHT;	
 
 	if(velocity.getLengthSq() > 0.00000001)
 	{
@@ -106,25 +106,25 @@ void Vehicle::update(float elapsed_time) {
 	// Find close in torus
 	isNearBottom = false;
 	if(position.x < rad) {
-		extraPos.x = 1360 + position.x;
+		extraPos.x = SCREENWIDTH + position.x;
 		extraPos.y = position.y;
 		isNearBottom = true;
 	}	
-	else if(position.x > 1360 - rad) {
-		extraPos.x = position.x - 1360;
+	else if(position.x > SCREENWIDTH - rad) {
+		extraPos.x = position.x - SCREENWIDTH;
 		extraPos.y = position.y;
 		isNearBottom = true;
 	}	
-	if(position.y > 768 - rad) 
+	if(position.y > SCREENHEIGHT - rad) 
 	{ 
 		if(!isNearBottom) extraPos.x = position.x;
-		extraPos.y = position.y - 768;
+		extraPos.y = position.y - SCREENHEIGHT;
 		isNearBottom = true;
 	}
 	if(position.y < rad) 
 	{ 
 		if(!isNearBottom) extraPos.x = position.x;
-		extraPos.y = 768 + position.y;
+		extraPos.y = SCREENHEIGHT + position.y;
 		isNearBottom = true;
 	}
 }
