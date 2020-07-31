@@ -25,6 +25,10 @@ class MovingEntity {
 		fVector extraPos;
 		bool isNearBottom;
 
+		int SCREENWIDTH;
+		int SCREENHEIGHT;
+
+		std::vector<Vehicle*> boids;
 		float mass = .5;
 		float maxSpeed = 19;
 		float maxForce = 39;

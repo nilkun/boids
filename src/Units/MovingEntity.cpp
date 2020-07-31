@@ -59,6 +59,8 @@ MovingEntity::MovingEntity() {
 	velocity = { cos(direction)*maxSpeed, sin(direction)*maxSpeed };
 	mass = 1;
 	isNearBottom = false;
+	SCREENWIDTH = 1360;
+	SCREENHEIGHT = 768;
 
 };
 // SDL_Point* getNewPoints(SDL_Point[4] points, int x, int y) {	
