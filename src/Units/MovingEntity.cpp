@@ -2,8 +2,8 @@
 #include "../Engine/nilkun.h"
 #include "./Vehicle.h"
 
-int SCREENWIDTH = 960;
-int SCREENHEIGHT = 540;
+int SCREENWIDTH = SCREENWIDTH;
+int SCREENHEIGHT = SCREENHEIGHT;
 void DrawCircle(SDL_Renderer * renderer, int32_t centreX, int32_t centreY, int32_t radius)
 {
 	const int32_t diameter = (radius * 2);
@@ -39,9 +39,9 @@ void DrawCircle(SDL_Renderer * renderer, int32_t centreX, int32_t centreY, int32
 	}
 }
 
-Flock::Flock() 
+Flock::Flock(int w, int h):SCREENWIDTH(w), SCREENHEIGHT(h) 
 {
-	for(int i = 0; i < 500; i++) boids.push_back(new Vehicle(this));
+	for(int i = 0; i < 300; i++) boids.push_back(new Vehicle(this));
 }
 
 void Flock::update(float delta) {
@@ -100,43 +100,43 @@ SDL_Point extra2[4];
 SDL_Point extra3[4];
 
 	if(position.x < length) {
-		setNewPoints(extra, points, 960, 0);
+		setNewPoints(extra, points, SCREENWIDTH, 0);
 		SDL_RenderDrawLines(renderer, extra, count);
 		if(position.y < length) {
-			setNewPoints(extra2, extra, 0, 540);
-			setNewPoints(extra3, points, 0, 540);
+			setNewPoints(extra2, extra, 0, SCREENHEIGHT);
+			setNewPoints(extra3, points, 0, SCREENHEIGHT);
 			SDL_RenderDrawLines(renderer, extra2, count);
 			SDL_RenderDrawLines(renderer, extra3, count);
 		}
-		else if(position.y + length > 540) {
-			setNewPoints(extra2, extra, 0, -540);
-			setNewPoints(extra3, points, 0, -540);
+		else if(position.y + length > SCREENHEIGHT) {
+			setNewPoints(extra2, extra, 0, -SCREENHEIGHT);
+			setNewPoints(extra3, points, 0, -SCREENHEIGHT);
 			SDL_RenderDrawLines(renderer, extra2, count);
 			SDL_RenderDrawLines(renderer, extra3, count);
 		}
 	}
-	else if(position.x + length > 960) {
-		setNewPoints(extra, points, -960, 0);
+	else if(position.x + length > SCREENWIDTH) {
+		setNewPoints(extra, points, -SCREENWIDTH, 0);
 		SDL_RenderDrawLines(renderer, extra, count);
 		if(position.y < length) {
-			setNewPoints(extra2, extra, 0, 540);
-			setNewPoints(extra3, points, 0, 540);
+			setNewPoints(extra2, extra, 0, SCREENHEIGHT);
+			setNewPoints(extra3, points, 0, SCREENHEIGHT);
 			SDL_RenderDrawLines(renderer, extra2, count);
 			SDL_RenderDrawLines(renderer, extra3, count);
 		}
-		else if(position.y + length > 540) {
-			setNewPoints(extra2, extra, 0, -540);
-			setNewPoints(extra3, points, 0, -540);
+		else if(position.y + length > SCREENHEIGHT) {
+			setNewPoints(extra2, extra, 0, -SCREENHEIGHT);
+			setNewPoints(extra3, points, 0, -SCREENHEIGHT);
 			SDL_RenderDrawLines(renderer, extra2, count);
 			SDL_RenderDrawLines(renderer, extra3, count);
 		}
 	}
 	else if(position.y < length) {
-			setNewPoints(extra, points, 0, 540);
+			setNewPoints(extra, points, 0, SCREENHEIGHT);
 			SDL_RenderDrawLines(renderer, extra, count);
 		}
-		else if(position.y + length > 540) {
-			setNewPoints(extra, points, 0, -540);
+		else if(position.y + length > SCREENHEIGHT) {
+			setNewPoints(extra, points, 0, -SCREENHEIGHT);
 			SDL_RenderDrawLines(renderer, extra, count);
 		}
 };

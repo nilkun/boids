@@ -7,8 +7,10 @@ class Vehicle;
 class Flock 
 {
 	public:
+		int SCREENWIDTH;
+		int SCREENHEIGHT;
 		std::vector<Vehicle*> boids;
-		Flock(); 
+		Flock(int w, int h); 
 		void update(float delta);
 		void render(SDL_Renderer *renderer);
 };
