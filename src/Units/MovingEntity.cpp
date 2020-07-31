@@ -56,7 +56,7 @@ MovingEntity::MovingEntity() {
 	float direction = (nilkun::random(1, 360)/360.0f)*6.2308f;
 	heading = { cos(direction), sin(direction) };
 	side = { sin(direction), -cos(direction) };
-	position = { static_cast<float>(nilkun::random(0, SCREENWIDTH), static_cast<float>(nilkun::random(0,SCREENHEIGHT))};
+	position = { static_cast<float>(nilkun::random(0, SCREENWIDTH)), static_cast<float>(nilkun::random(0,SCREENHEIGHT))};
 	maxSpeed = nilkun::random(260, 300);
 	velocity = { cos(direction)*maxSpeed, sin(direction)*maxSpeed };
 	mass = 1;
